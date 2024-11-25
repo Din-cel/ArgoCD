@@ -1,7 +1,21 @@
 apiVersion: apps/v1
-kind: Deployment 
-metadata: 
+kind: Deployment
+metadata:
   name: wiki-deployment
   labels:
-    app: wiki 
-spec: 
+    app: wiki
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: wiki  # Deze selector moet overeenkomen met de labels in de template
+  template:
+    metadata:
+      labels:
+        app: wiki  # Labels in de template moeten overeenkomen met de selector
+    spec:
+      containers:
+      - name: wiki-container
+        image: nginx:latest  # Gebruik de gewenste image
+        ports:
+        - containerPort: 80

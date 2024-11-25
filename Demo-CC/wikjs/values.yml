@@ -1,0 +1,13 @@
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-issuer
+  hosts:
+    - host: wiki.cloudcomp-16.ucll.cloud
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - wiki.cloudcomp-16.ucll.cloud
+      secretName: oefening-tls

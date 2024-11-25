@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kuma
+  namespace: kuma
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - up.16.co.ucll.cloud
+    secretName: up.16.co.ucll.cloud
+  rules:
+  - host: up.16.co.ucll.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: uptime-kuma-service
+            port: 
+              number: 80
